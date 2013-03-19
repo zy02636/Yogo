@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<!-- 改配置文件用于处理所有的主页的请求 -->
+	<package name="strutsHome" extends="struts-default">
+	    <!-- 初始化用户的展示好友信息的主页 -->
+		<action name="Profile"  class="HomeAction" method="Profile">
+			<result name="SUCCESS" type="dispatcher">
+				/home.jsp
+		    </result>
+			<result name="FAIL" type="redirect">
+				/login.jsp
+            </result>
+            <result name="FAIL_404" type="redirect">
+				/error.jsp
+            </result>
+		</action>
+		
+	    <!-- 初始化用户的自己主页 -->
+		<action name="Home"  class="HomeAction" method="initMain">
+			<result name="SUCCESS" type="dispatcher">
+				/main.jsp
+		    </result>
+		    <result name="FAIL" type="redirect">
+				/login.jsp
+            </result>
+			<result name="FAIL_404" type="redirect">
+				/error.jsp
+            </result>
+		</action>
+		
+	    <!-- 网页添加一条url书签 -->
+		<action name="addUrl"  class="HomeAction" method="addUrl">
+		    <result name="FAIL" type="redirect">
+				/Home.action
+            </result>
+            <result name="LOGIN" type="redirect">
+				/error.jsp
+            </result>
+            <param name="url">http://www.91url.com</param>
+		</action>
+		
+		<!-- 插件ajax访问HomeAction 获取用户的Url -->
+		<action name="getXMLUrls"  class="HomeAction" method="getUrlsByPlugin" />
+		
+		<!-- 更新用户的头像 -->
+		<action name="updateUserImg"  class="HomeAction" method="updateUserImg" />
+		<action name="getProfile"  class="HomeAction" method="getProfile">
+			<result name="SUCCESS" type="dispatcher">
+				/profile.jsp
+		    </result>
+		    <result name="SUCCESS_SELF" type="redirect">
+				/Profile.action
+		    </result>
+		    <result name="FAIL" type="redirect">
+				/login.jsp
+            </result>
+		    <result name="FAIL_404" type="redirect">
+				/error.jsp
+            </result>
+		</action>
+	</package>
+</struts>

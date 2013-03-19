@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="strutsUrl" extends="struts-default">
+	    <!-- Ajax 更新分享的数量 -->
+		<action name="shareUrl"  class="UrlAction" method="shareUrl" />
+		<!-- Ajax 更新书签标题 -->
+		<action name="updateUrl"  class="UrlAction" method="updateUrl" />
+	    <!-- Ajax 删除书签 -->
+		<action name="delUrl"  class="UrlAction" method="delUrl" />
+		<!-- 根据tagId获取书签 -->
+		<action name="Url"  class="UrlAction" method="getUrlByTagId">
+		    <result name="SUCCESS" type="dispatcher">
+				/url.jsp
+		    </result>
+			<result name="FAIL" type="redirect">
+				/Home.action
+            </result>
+		</action>
+	</package>
+</struts>

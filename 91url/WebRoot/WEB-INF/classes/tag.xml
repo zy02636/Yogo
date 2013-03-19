@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="strutsTag" extends="struts-default">
+	<!-- 虽然参数都是tagName,但是这边是指不同表的字段 -->
+		<action name="addTag"  class="TagAction" method="addTag">
+            <param name="urlId">-1</param>
+            <param name="userlId">-1</param>
+            <param name="tagName">91url.com</param>
+		</action>
+		<action name="addUserTag"  class="TagAction" method="addUserTag">
+            <param name="userTagName">91url.com</param>
+		</action>
+		<!-- 删除用户自我描述的标签 -->
+		<action name="delUserTag"  class="TagAction" method="delUserTag">
+            <param name="userTagId">-1</param>
+		</action>
+		<!-- 删除书签的标签 -->
+		<action name="delUrlTag"  class="TagAction" method="delUrlTag">
+            <param name="urlTagId">-1</param>
+		</action>
+		<!-- 根据用户输入的前缀查询用户的标签 -->
+		<action name="getTagsByPrefix"  class="TagAction" method="getTagsByPrefix">
+		</action>
+	</package>
+</struts>

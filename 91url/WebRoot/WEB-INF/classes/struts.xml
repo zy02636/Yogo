@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+  <constant name="struts.objectFactory" value="spring" /> <!-- 把Struts的实例化Action 行为交给  Spring, 由Spring 容器实例化Action  -->   
+  <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>  <!--允许 执行静态方法   -->
+                   <!-- <constant name="struts.i18n.encoding" value="uft-8"/>       解决乱码    -->
+  <constant name="struts.ui.theme" value="simple"/>                    <!--解决页面排版  -->
+  <include file="user.xml" />
+  <include file="home.xml" />
+  <include file="tag.xml" />
+  <include file="url.xml" />
+  <include file="comment.xml" />
+</struts>

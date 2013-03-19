@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<!-- 配置文件处理所有url的评论 -->
+	<package name="strutsComment" extends="struts-default">
+	    <!-- 添加一条url的评论 -->
+		<action name="postComment"  class="CommentAction" method="postComment" />
+		
+	    <!-- 删除一条url的评论 -->
+		<action name="delComment"  class="CommentAction" method="delComment" />
+		
+	    <!-- 根据url的ID获取所有的对应评论 -->
+		<action name="getComments"  class="CommentAction" method="getComments" />
+		
+
+	</package>
+</struts>

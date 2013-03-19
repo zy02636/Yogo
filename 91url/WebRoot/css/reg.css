@@ -1,0 +1,105 @@
+.bodyClass{
+background-color:#9CDCF9;
+font-family:verdana;
+font-size:14px;
+}
+.posDivMain{
+    text-align:center;
+}
+.header{
+	background-color:#9CDCF9;
+	padding-bottom:13px;
+	padding-top:18px;
+	text-align:left;
+	/*background-image:url(../img/bc_IE.png);*/
+}
+.divMain{
+width:690px;
+MARGIN-RIGHT: auto;
+MARGIN-LEFT: auto;
+height:450px;
+background-color:white;
+}
+
+.reg{
+MARGIN-left:50px;
+*margin-left:20;
+MARGIN-top:60px;
+width:610px;
+height:260px;
+float:left;
+border:1px solid #cccccc;
+color:gray;
+
+}
+.line{
+   height:40px;
+   padding-top:30px;
+   padding-left:15px;
+}
+.item{
+   float:left;
+   height:40px;
+   padding-left:15px;
+}
+.regInfo{
+	padding-top:10px;
+	padding-left:20px;
+	font-size:12px;
+	float:left;
+	color:gray;
+}
+
+.txtInput{
+width:260px;
+height:30px;
+line-height:28px;
+*line-height:25px;
+border:1px solid #91A199;
+color:gray;
+font-size:16px;
+vertical-align:middle;
+}
+.codeInput{
+width:80px;
+height:30px;
+line-height:28px;
+border:1px solid #91A199;
+color:gray;
+font-size:16px;
+margin-left:4px;
+vertical-align:middle;
+}
+.pwdInput{
+width:200px;
+height:25px;
+line-height:25px;
+border:1px solid #91A199;
+color:gray;
+font-size:14px;
+display:none;
+}
+
+.hyper{
+	color:#005EAC;
+	text-decoration:none;
+	font-size:12px;
+	cursor:pointer;
+}
+.hyper:hover{
+	color:#005EAC;
+	font-size:12px;
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+
+.subButton{
+	height:30px;
+	width:80px;
+	color:white;
+	font-size:16px;
+	background-color:#629D47;
+	border:1px solid #ededed;
+	font-family:arial;
+}

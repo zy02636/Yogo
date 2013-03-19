@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="strutsUser" extends="struts-default">
+		<action name="Login"  class="UserAction" method="login">
+			<result name="SUCCESS" type="redirect">
+				/Profile.action
+		    </result>
+			<result name="FAIL" type="dispatcher">
+				/login.jsp
+            </result>
+		</action>
+		<action name="CookieLogin"  class="UserAction" method="cookieLogin">
+			<result name="SUCCESS" type="redirect">
+				/Profile.action
+		    </result>
+			<result name="FAIL" type="dispatcher">
+				/error.jsp
+            </result>
+		</action>
+		<action name="PluginLogin"  class="UserAction" method="pluginLogin" />
+		<action name="Logoff"  class="UserAction" method="logoff">
+		    <result name="SUCCESS" type="redirect">
+				/login.jsp
+		    </result>
+		</action>
+		<action name="checkUserName"  class="UserAction" method="checkUserName" />
+		<action name="preAddUser"  class="UserAction" method="preAddUser">
+		    <result name="SUCCESS" type="dispatcher">
+				/Profile.action
+		    </result>
+		    <result name="FAIL" type="redirect">
+				/error.jsp
+		    </result>
+		</action>
+		<action name="updateUserName"  class="UserAction" method="updateUserName" />
+		<action name="Fans"  class="UserAction" method="getFans">
+		    <result name="SUCCESS" type="dispatcher">
+				/fans.jsp
+		    </result>
+		    <result name="SESSIONFAIL" type="redirect">
+				/Home.action
+		    </result>
+		    <result name="FAIL" type="redirect">
+				/Home.action
+		    </result>
+		</action>
+		<action name="Follows"  class="UserAction" method="getFollows">
+		    <result name="SUCCESS" type="dispatcher">
+				/follow.jsp
+		    </result>
+		    <result name="SESSIONFAIL" type="redirect">
+				/Home.action
+		    </result>
+		    <result name="FAIL" type="redirect">
+				/Home.action
+		    </result>
+		</action>
+		<action name="delFan"  class="UserAction" method="delFan">
+		    <result name="SESSIONFAIL" type="redirect">
+				/Fans.action
+		    </result>
+		</action>
+		<action name="delFollow"  class="UserAction" method="delFollow">
+		    <result name="SESSIONFAIL" type="redirect">
+				/Fans.action
+		    </result>
+		</action>
+		<action name="addFollow"  class="UserAction" method="addFollow">
+		    <result name="SESSIONFAIL" type="redirect">
+				/Fans.action
+		    </result>
+		</action>
+		<action name="User"  class="UserAction" method="getUserByTagId">
+		    <result name="SUCCESS" type="dispatcher">
+				/user.jsp
+		    </result>
+			<result name="FAIL" type="redirect">
+				/Home.action
+            </result>
+		</action>
+		<action name="mailPwd"  class="UserAction" method="getUserPwdByUserName" />
+		 
+		<action name="changePwd"  class="UserAction" method="changPwd" />
+		 
+	</package>
+</struts>

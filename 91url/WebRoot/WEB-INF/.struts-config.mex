@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/result.jsp" location="50,250" dimension="89,53" />
+  <StrutsActivity path="/comment.jsp" location="350,250" dimension="111,53" />
+  <StrutsActivity path="/addUser.do" location="50,50" dimension="362,104" />
+  <StrutsActivity path="/showCom.do" location="650,50" dimension="362,104" />
+  <StrutsTransition id="/showCom.do,showComments,/comment.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="831,154" />
+      <AbsolutePoint location="831,276" />
+      <AbsolutePoint location="461,276" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/addUser.do,addResult,/result.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="94,154" />
+      <AbsolutePoint location="94,250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

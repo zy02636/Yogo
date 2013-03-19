@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.url.com/"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CalculatorService"
+	targetNamespace="http://ws.url.com/">
+	<types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:tns="http://ws.url.com/" targetNamespace="http://ws.url.com/"
+			version="1.0">
+
+			<xs:element name="add" type="tns:add" />
+
+			<xs:element name="addResponse" type="tns:addResponse" />
+
+			<xs:element name="hello" type="tns:hello" />
+
+			<xs:element name="helloResponse" type="tns:helloResponse" />
+
+			<xs:complexType name="hello">
+				<xs:sequence />
+			</xs:complexType>
+
+			<xs:complexType name="helloResponse">
+				<xs:sequence>
+					<xs:element name="return" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="add">
+				<xs:sequence>
+					<xs:element name="a" type="xs:int" />
+					<xs:element name="b" type="xs:int" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="addResponse">
+				<xs:sequence>
+					<xs:element name="return" type="xs:int" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</types>
+	<message name="add">
+		<part element="tns:add" name="parameters" />
+	</message>
+	<message name="addResponse">
+		<part element="tns:addResponse" name="parameters" />
+	</message>
+	<message name="hello">
+		<part element="tns:hello" name="parameters" />
+	</message>
+	<message name="helloResponse">
+		<part element="tns:helloResponse" name="parameters" />
+	</message>
+	<portType name="CalculatorDelegate">
+		<operation name="add">
+			<input message="tns:add" />
+			<output message="tns:addResponse" />
+		</operation>
+		<operation name="hello">
+			<input message="tns:hello" />
+			<output message="tns:helloResponse" />
+		</operation>
+	</portType>
+	<binding name="CalculatorPortBinding" type="tns:CalculatorDelegate">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="add">
+			<soap:operation soapAction="http://ws.url.com/add" style="document"/>
+			<input>
+				<soap:body use="literal" namespace="http://ws.url.com/"  />
+			</input>
+			<output>
+				<soap:body use="literal" namespace="http://ws.url.com/" />
+			</output>
+		</operation>
+		<operation name="hello">
+			<soap:operation soapAction="http://ws.url.com/hello" style="document"/>
+			<input>
+				<soap:body use="literal" namespace="http://ws.url.com/" />
+			</input>
+			<output>
+				<soap:body use="literal" namespace="http://ws.url.com/" />
+			</output>
+		</operation>
+	</binding>
+	<service name="CalculatorService">
+		<port binding="tns:CalculatorPortBinding" name="CalculatorPort">
+			<soap:address location="http://localhost:8080/SOA/CalculatorPort" />
+		</port>
+	</service>
+</definitions>

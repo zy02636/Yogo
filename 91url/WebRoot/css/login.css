@@ -1,0 +1,138 @@
+
+.divMain{
+width:960px;
+MARGIN-RIGHT: auto;
+MARGIN-LEFT: auto;
+height:490px;
+background-color:white;
+}
+
+.divSignIn{
+margin-top:60px;
+margin-left:60px;
+font-size:12px;
+padding-left:40px;
+width:245px;
+height:280px;
+border:1px solid #cccccc;
+background-color:white;
+padding-top:15px;
+}
+.header{
+	background-color:#9CDCF9;
+	padding-bottom:10px;
+	padding-top:18px;
+	/*background-image:url(../img/bc_IE.png);*/
+}
+.body{
+background-color:#9CDCF9;
+font-family:verdana;
+font-size:16px;
+}
+.autoLogin{
+vertical-align:middle;
+margin-top:0;
+}
+.txtInput{
+width:200px;
+height:25px;
+line-height:25px;
+border:1px solid #91A199;
+color:gray;
+font-size:14px;
+}
+.codeInput{
+width:60px;
+height:25px;
+line-height:25px;
+border:1px solid #91A199;
+color:gray;
+font-size:14px;
+}
+.pwdInput{
+width:200px;
+height:25px;
+line-height:25px;
+border:1px solid #91A199;
+color:gray;
+font-size:14px;
+display:none;
+}
+.loginButton{
+height:30px;
+width:80px;
+color:white;
+font-size:14px;
+background-color:#005EAC;
+vertical-align:middle;
+border:1px solid #cccccc;
+}
+.regButton{
+height:30px;
+width:80px;
+color:white;
+font-size:14px;
+background-color:#629D47;
+border:1px solid #cccccc;
+}
+.hyper{
+	color:#005EAC;
+	text-decoration:none;
+	font-size:12px;
+	cursor:pointer;
+}
+.hyper:hover{
+	color:#005EAC;
+	font-size:12px;
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+.infoDiv{
+height:15px;
+visibility:visible;
+width:150px;
+}
+
+.regDiv{
+    width:480px;
+    height:280px;
+    border:1px solid #cccccc;
+    position:absolute;
+    background-color:white;
+    display:none;
+    color:gray;
+    padding-left:40px;
+}
+.subButton{
+	height:30px;
+	width:66px;
+	color:white;
+	font-size:14px;
+	background-color:#629D47;
+	border:1px solid #ededed;
+}
+.regInfo{
+	float:right;
+	margin-right:30px;
+	height:22px;
+	width:120px;
+	padding-top:5px;
+	font-size:12px;
+}
+.codeInfo{
+	float:right;
+	margin-right:100px;
+	height:30px;
+	width:150px;
+	padding-top:5px;
+	font-size:12px;
+}
+.reg{
+margin-left:320px;
+padding-left:20px;
+margin-top:30px;
+width:200px;
+height:320px;
+border-left:1px dashed #cccccc;
+}

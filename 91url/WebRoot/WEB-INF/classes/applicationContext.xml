@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+    
+    <!-- 持久层的Spring管理配置文件  -->
+    
+    <bean id="IUserDAO" class="com.url.dao.IUserDAO" abstract="true" />
+	<bean id="UserDAO" class="com.url.dao.impl.UserDAO" parent="IUserDAO" />
+
+	<bean id="IUrlDAO" class="com.url.dao.IUrlDAO" abstract="true" />
+	<bean id="UrlDAO" class="com.url.dao.impl.UrlDAO" parent="IUrlDAO" />
+	
+	<bean id="ITagDAO" class="com.url.dao.ITagDAO" abstract="true" />
+	<bean id="TagDAO" class="com.url.dao.impl.TagDAO" parent="ITagDAO" />
+	
+	<bean id="IUserTagDAO" class="com.url.dao.IUserTagDAO" abstract="true" />
+	<bean id="UserTagDAO" class="com.url.dao.impl.UserTagDAO" parent="IUserTagDAO" />
+	
+	<bean id="ICommentDAO" class="com.url.dao.ICommentDAO" abstract="true" />
+	<bean id="CommentDAO" class="com.url.dao.impl.CommentDAO" parent="IUserTagDAO" />
+	
+	<!-- 业务逻辑层 Spring管理配置文件  -->
+	
+	<bean id="IUserService" class="com.url.service.IUserService" abstract="true"/>
+	<bean id="UserService" class="com.url.service.impl.UserService" parent="IUserService">
+		<property name="userDAO">        <!-- 获取用户信息 -->
+			<ref bean="UserDAO"/>
+		</property>
+		<property name="userTagDAO">     <!-- 获取用户标签信息 -->
+			<ref bean="UserTagDAO"/>
+		</property>
+	</bean>
+	
+	<!-- 用户url -->
+	<bean id="IUrlService" class="com.url.service.IUrlService" abstract="true"/>
+	<bean id="UrlService" class="com.url.service.impl.UrlService" parent="IUrlService">
+		<property name="urlDAO">         <!-- 获取url      -->
+			<ref bean="UrlDAO"/>
+		</property>
+		<property name="tagDAO">         <!-- 获取url的标签 -->
+			<ref bean="TagDAO"/>
+		</property>
+		<property name="commentDAO">       <!-- 获取对应url的相关信息 -->
+			<ref bean="CommentDAO"/>
+		</property>
+	</bean>
+	
+	<!-- 用户所存书签的标签 -->
+	<bean id="ITagService" class="com.url.service.ITagService" abstract="true"/>
+	<bean id="TagService" class="com.url.service.impl.TagService" parent="ITagService">
+		<property name="tagDAO">       
+			<ref bean="TagDAO"/>
+		</property>
+	</bean>
+		
+	<!-- 用户自我描述的标签 -->
+	<bean id="IUserTagService" class="com.url.service.IUserTagService" abstract="true"/>
+	<bean id="UserTagService" class="com.url.service.impl.UserTagService" parent="IUserTagService">
+		<property name="userTagDAO">       
+			<ref bean="UserTagDAO"/>
+		</property>
+	</bean>
+    <!-- 获取url的评论 -->
+	<bean id="ICommentService" class="com.url.service.ICommentService" abstract="true"/>
+	<bean id="CommentService" class="com.url.service.impl.CommentService" parent="ICommentService">
+		<property name="commentDAO">       
+			<ref bean="CommentDAO"/>
+		</property>
+	</bean>
+	
+	<!-- Web跳转控制层的Spring管理配置文件  -->
+	<bean id="UserAction" class="com.url.struts.action.UserAction">
+		<property name="urlService">        <!-- 注入url业务逻辑层 -->
+			<ref bean="UrlService"/>
+		</property>
+		<property name="userTagService">    <!-- 注入用户自我描述标签业务逻辑层 -->
+			<ref bean="UserTagService"/>
+		</property>
+	    <property name="tagService">        <!-- 注入url标签业务逻辑层 -->
+			<ref bean="TagService"/>
+		</property>
+		<property name="userService">       <!-- 注入用户业务逻辑层 -->
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	
+	<bean id="HomeAction" class="com.url.struts.action.HomeAction">
+		<property name="urlService">        <!-- 注入url业务逻辑层 -->
+			<ref bean="UrlService"/>
+		</property>
+		<property name="userTagService">    <!-- 注入用户自我描述标签业务逻辑层 -->
+			<ref bean="UserTagService"/>
+		</property>
+	    <property name="tagService">        <!-- 注入url标签业务逻辑层 -->
+			<ref bean="TagService"/>
+		</property>
+		<property name="userService">       <!-- 注入用户业务逻辑层 -->
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	
+	<bean id="TagAction" class="com.url.struts.action.TagAction">
+		<property name="tagService">        <!-- 注入url标签业务逻辑层 -->
+			<ref bean="TagService"/>
+		</property>
+		<property name="userTagService">    <!-- 注入url标签业务逻辑层 -->
+			<ref bean="UserTagService"/>
+		</property>
+	</bean>
+	
+	<bean id="CommentAction" class="com.url.struts.action.CommentAction">
+		<property name="commentService">    <!-- 注入url评论业务逻辑层 -->
+			<ref bean="CommentService"/>
+		</property>
+	</bean>
+	
+	<bean id="UrlAction" class="com.url.struts.action.UrlAction">
+		<property name="urlService">        <!-- 注入url业务逻辑层 -->
+			<ref bean="UrlService"/>
+		</property>
+		<property name="userTagService">    <!-- 注入用户自我描述标签业务逻辑层 -->
+			<ref bean="UserTagService"/>
+		</property>
+	    <property name="tagService">        <!-- 注入url标签业务逻辑层 -->
+			<ref bean="TagService"/>
+		</property>
+		<property name="userService">       <!-- 注入用户业务逻辑层 -->
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+</beans>

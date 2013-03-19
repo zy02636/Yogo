@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.url.com/"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UrlService"
+	targetNamespace="http://ws.url.com/">
+	<types>
+		<xs:schema 
+		    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:tns="http://ws.url.com/" 
+			targetNamespace="http://ws.url.com/"
+			version="1.0">
+
+			<xs:element name="getUrl" type="tns:getUrl" />
+			
+			<xs:element name="getUrlResponse" type="tns:getUrlResponse" />
+
+            <xs:element name="setUrl" type="tns:setUrl" />
+
+			<xs:element name="setUrlResponse" type="tns:setUrlResponse" />
+
+            <xs:element name="addUrl" type="tns:addUrl" />
+
+			<xs:element name="addUrlResponse" type="tns:addUrlResponse" />
+
+            <xs:element name="login" type="tns:login" />
+
+			<xs:element name="loginResponse" type="tns:loginResponse" />
+
+			<xs:complexType name="getUrl">
+				<xs:sequence>
+					<xs:element name="username" type="xs:string" />
+					<xs:element name="password" type="xs:string" />
+					<xs:element name="groupCount" type="xs:int" />
+				</xs:sequence>
+			</xs:complexType>
+			
+
+			<xs:complexType name="getUrlResponse">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="urls" nillable="true" type="tns:url" />
+				</xs:sequence>
+			</xs:complexType>
+			
+            <xs:complexType name="setUrl">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="urlCollection" type="tns:urlCollection" />
+					<xs:element name="username" type="xs:string" />
+					<xs:element name="password" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="setUrlResponse">
+				<xs:sequence>
+					<xs:element name="result" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="url">
+				<xs:sequence>
+					<xs:element name="addDate" type="xs:string" />
+					<xs:element name="shareId" type="xs:int" />
+					<xs:element minOccurs="0" name="url" type="xs:string" />
+					<xs:element name="urlFeatures" nillable="true" type="xs:string" />
+					<xs:element name="featureScores" nillable="true" type="xs:int" />
+					<xs:element name="urlId" type="xs:int" />
+					<xs:element name="urlOwner" type="xs:string" />
+					<xs:element name="urlOwnerId" type="xs:int" />
+					<xs:element name="urlTitle" type="xs:string" />
+					<xs:element name="shareIdInfoId" type="xs:int" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="urlCollection">
+				<xs:sequence>
+					<xs:element name="addDate" type="xs:string" />
+					<xs:element name="shareId" type="xs:string" />
+					<xs:element name="url" type="xs:string" />
+					<xs:element name="urlFeatures" type="xs:string" />
+					<xs:element name="featureScores" type="xs:string" />
+					<xs:element name="urlId" type="xs:string" />
+					<xs:element name="urlOwner" type="xs:string" />
+					<xs:element name="urlOwnerId" type="xs:string" />
+					<xs:element name="urlTitle" type="xs:string" />
+					<xs:element name="shareIdInfoId" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="addUrl">
+				<xs:sequence>
+				    <xs:element name="url" type="xs:string" />
+				    <xs:element name="urlTitle" type="xs:string" />
+					<xs:element name="urlOwner" type="xs:string" />
+					<xs:element name="urlOwnerId" type="xs:int" />
+					<xs:element name="urlAddDate" type="xs:string" />
+					<xs:element name="urlType" type="xs:int" />
+					<xs:element name="urlTag" nillable="true" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="addUrlResponse">
+				<xs:sequence>
+					<xs:element name="result" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="login">
+				<xs:sequence>
+					<xs:element name="username" type="xs:string" />
+					<xs:element name="password" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="loginResponse">
+				<xs:sequence>
+					<xs:element name="result" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</types>
+	<message name="getUrl">
+		<part element="tns:getUrl" name="parameters" />
+	</message>
+	<message name="getUrlResponse">
+		<part element="tns:getUrlResponse" name="parameters" />
+	</message>
+	
+	<message name="setUrl">
+		<part element="tns:setUrl" name="parameters" />
+	</message>
+	<message name="setUrlResponse">
+		<part element="tns:setUrlResponse" name="parameters" />
+	</message>
+	
+	<message name="addUrl">
+		<part element="tns:addUrl" name="parameters" />
+	</message>
+	<message name="addUrlResponse">
+		<part element="tns:addUrlResponse" name="parameters" />
+	</message>
+	
+	<message name="login">
+		<part element="tns:login" name="parameters" />
+	</message>
+	<message name="loginResponse">
+		<part element="tns:loginResponse" name="parameters" />
+	</message>
+	
+	<portType name="UrlServiceDelegate">
+		<operation name="getUrl">
+			<input message="tns:getUrl" />
+			<output message="tns:getUrlResponse" />
+		</operation>
+		<operation name="setUrl">
+			<input message="tns:setUrl" />
+			<output message="tns:setUrlResponse" />
+		</operation>
+		<operation name="addUrl">
+			<input message="tns:addUrl" />
+			<output message="tns:addUrlResponse" />
+		</operation>
+		<operation name="login">
+			<input message="tns:login" />
+			<output message="tns:loginResponse" />
+		</operation>
+	</portType>
+	<binding name="UrlServicePortBinding" type="tns:UrlServiceDelegate">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="getUrl">
+			<soap:operation soapAction="http://ws.url.com/getUrl" />
+			<input>
+				<soap:body use="literal" namespace="http://ws.url.com/"/>
+			</input>
+			<output>
+				<soap:body use="literal" namespace="http://ws.url.com/"/>
+			</output>
+		</operation>
+		
+		<operation name="setUrl">
+			<soap:operation soapAction="http://ws.url.com/setUrl" />
+			<input>
+				<soap:body use="literal" namespace="http://ws.url.com/"/>
+			</input>
+			<output>
+				<soap:body use="literal" namespace="http://ws.url.com/"/>
+			</output>
+		</operation>
+		<operation name="addUrl">
+			<soap:operation soapAction="http://ws.url.com/addUrl" />
+			<input>
+				<soap:body use="literal" namespace="http://ws.url.com/"/>
+			</input>
+			<output>
+				<soap:body use="literal" namespace="http://ws.url.com/"/>
+			</output>
+		</operation>
+		<operation name="login">
+			<soap:operation soapAction="http://ws.url.com/login" />
+			<input>
+				<soap:body use="literal" namespace="http://ws.url.com/"/>
+			</input>
+			<output>
+				<soap:body use="literal" namespace="http://ws.url.com/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="UrlService">
+		<port binding="tns:UrlServicePortBinding" name="UrlServicePort">
+			<soap:address location="http://localhost:8080/SOA/UrlServicePort" />
+		</port>
+	</service>
+</definitions>

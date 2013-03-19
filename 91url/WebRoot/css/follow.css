@@ -1,0 +1,10 @@
+.follow{
+    height:30px;
+	border-top: 1px dashed #9CA8A6;
+	padding-top:20px;
+	padding-bottom:10px;
+}
+.followOp{
+    float:right;
+    font-size:12px;
+}

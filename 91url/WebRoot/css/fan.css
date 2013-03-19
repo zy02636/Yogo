@@ -1,0 +1,10 @@
+.fan{
+    height:30px;
+	border-top: 1px dashed #9CA8A6;
+	padding-top:20px;
+	padding-bottom:10px;
+}
+.fanOp{
+    float:right;
+    font-size:12px;
+}
